@@ -36,6 +36,7 @@
 # for locked versions of packages.
 
 composer.lock
+/dump.sql.gz
 
 web/themes/custom/react_hello/node_modules/
 /node_modules/
