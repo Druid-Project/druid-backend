@@ -28,7 +28,6 @@
          style="background-color: #999;padding:20px; border-radius:5px">
 </a>
 
-
   <h3 align="center">REACT24K TEAM-5</h3>
 
   <p align="center">
