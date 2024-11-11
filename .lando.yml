@@ -1,0 +1,4 @@
+name: druid-backend
+recipe: drupal10
+config:
+  webroot: web
