@@ -25,7 +25,7 @@
         "drupal/mautic_paragraph": "^1.1",
         "drupal/paragraphs": "^1.18",
         "drush/drush": "^12.5",
-        "mautic/api-library": "^3.0"
+        "psr/log": "^3.0"
     },
     "conflict": {
         "drupal/drupal": "*"
