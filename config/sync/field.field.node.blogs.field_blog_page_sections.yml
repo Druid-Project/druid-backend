@@ -1,0 +1,44 @@
+uuid: 9d5b964c-8e52-47fd-af72-f4211cc6acde
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_blog_page_sections
+    - node.type.blogs
+  module:
+    - entity_reference_revisions
+id: node.blogs.field_blog_page_sections
+field_name: field_blog_page_sections
+entity_type: node
+bundle: blogs
+label: 'Blog page sections'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    negate: 0
+    target_bundles_drag_drop:
+      blog:
+        weight: 7
+        enabled: false
+      card:
+        weight: 8
+        enabled: false
+      feature_section:
+        weight: 9
+        enabled: false
+      hero_section:
+        weight: 10
+        enabled: false
+      mautic:
+        weight: 11
+        enabled: false
+      our_services_section:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,45 @@
+uuid: 453fe555-e7fc-438b-9811-e9105be4349d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.blog.field_blog_post
+    - field.field.paragraph.blog.field_card_image
+    - field.field.paragraph.blog.field_title
+    - paragraphs.paragraphs_type.blog
+  module:
+    - media_library
+    - text
+id: paragraph.blog.default
+targetEntityType: paragraph
+bundle: blog
+mode: default
+content:
+  field_blog_post:
+    type: text_textarea_with_summary
+    weight: 2
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_card_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

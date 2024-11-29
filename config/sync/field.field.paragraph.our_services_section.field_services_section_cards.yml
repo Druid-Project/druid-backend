@@ -1,0 +1,40 @@
+uuid: fdfcec70-2451-45b2-929b-fd35ce07b444
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_services_section_cards
+    - paragraphs.paragraphs_type.card
+    - paragraphs.paragraphs_type.our_services_section
+  module:
+    - entity_reference_revisions
+id: paragraph.our_services_section.field_services_section_cards
+field_name: field_services_section_cards
+entity_type: paragraph
+bundle: our_services_section
+label: 'Services section cards'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card: card
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 5
+        enabled: true
+      feature_section:
+        weight: 6
+        enabled: false
+      hero_section:
+        weight: 7
+        enabled: false
+      our_services_section:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

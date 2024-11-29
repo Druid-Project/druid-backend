@@ -1,0 +1,10 @@
+uuid: 2493cb3d-473b-463c-a664-b0e205330789
+langcode: en
+status: true
+dependencies: {  }
+id: blog_cards
+label: 'Blog Cards'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

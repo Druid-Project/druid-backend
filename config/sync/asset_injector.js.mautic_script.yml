@@ -1,0 +1,21 @@
+uuid: 064108b7-8d89-40ca-be6c-beeeadb4784d
+langcode: en
+status: true
+dependencies: {  }
+id: mautic_script
+label: 'Mautic Script'
+code: |-
+  (function(w,d,t,u,n,a,m){w['MauticTrackingObject']=n;
+          w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)},a=d.createElement(t),
+          m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://druid-mautic.lndo.site/mtc.js','mt');
+
+      mt('send', 'pageview');
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions: {  }
+contexts: {  }
+conditions_require_all: false

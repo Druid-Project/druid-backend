@@ -1,0 +1,49 @@
+uuid: 69b05932-5463-4dc1-8571-5320f4e7c9fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_blog_card_list
+    - paragraphs.paragraphs_type.blog_cards
+    - paragraphs.paragraphs_type.card
+  module:
+    - entity_reference_revisions
+id: paragraph.blog_cards.field_blog_card_list
+field_name: field_blog_card_list
+entity_type: paragraph
+bundle: blog_cards
+label: 'Blog Card List'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card: card
+    negate: 0
+    target_bundles_drag_drop:
+      blog:
+        weight: 8
+        enabled: false
+      blog_cards:
+        weight: 9
+        enabled: false
+      card:
+        weight: 10
+        enabled: true
+      feature_section:
+        weight: 11
+        enabled: false
+      hero_section:
+        weight: 12
+        enabled: false
+      mautic:
+        weight: 13
+        enabled: false
+      our_services_section:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

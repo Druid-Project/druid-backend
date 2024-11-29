@@ -1,0 +1,15 @@
+--- vendor/mautic/api-library/lib/Api/Api.php	2024-11-07 16:58:26
++++ vendor/mautic/api-library/lib/Api/Api.php	2024-11-07 16:58:52
+@@ -125,11 +125,11 @@
+      *
+      * @return $this
+      */
+-    public function setLogger(LoggerInterface $logger)
++    public function setLogger(LoggerInterface $logger): void
+     {
+         $this->logger = $logger;
+ 
+-        return $this;
+     }
+ 
+     /**

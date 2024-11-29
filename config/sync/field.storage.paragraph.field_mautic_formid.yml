@@ -1,0 +1,23 @@
+uuid: 3f6d3bc5-6cdd-4511-885b-3af2b5ca986b
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: z42JN9Cep73-7TDgMhTJWqj0UZb9qB2_VW76daD8OxI
+id: paragraph.field_mautic_formid
+field_name: field_mautic_formid
+entity_type: paragraph
+type: list_integer
+settings:
+  allowed_values: {  }
+  allowed_values_function: mautic_paragraph_form_list
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
