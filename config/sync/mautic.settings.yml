@@ -1,0 +1,12 @@
+_core:
+  default_config_hash: 57YHD-gK9YrCd4mfkPt3DuRirKm_ZMRh2ILuF6JpC44
+visibility:
+  request_path_mode: 0
+  request_path_pages: |-
+    /admin
+    /admin/*
+    /batch
+    /node/add*
+    /node/*/*
+    /user/*/*
+header: false

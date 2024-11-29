@@ -1,0 +1,33 @@
+uuid: 45684da4-7b40-43ef-b968-5958a1c27670
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.our_services_section.field_services_section_cards
+    - field.field.paragraph.our_services_section.field_title
+    - paragraphs.paragraphs_type.our_services_section
+  module:
+    - entity_reference_revisions
+id: paragraph.our_services_section.default
+targetEntityType: paragraph
+bundle: our_services_section
+mode: default
+content:
+  field_services_section_cards:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

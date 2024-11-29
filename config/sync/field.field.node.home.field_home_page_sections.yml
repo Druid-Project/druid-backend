@@ -1,0 +1,38 @@
+uuid: a3e2fe10-f16c-41df-9867-a41e6e5b2f79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_page_sections
+    - node.type.home
+  module:
+    - entity_reference_revisions
+id: node.home.field_home_page_sections
+field_name: field_home_page_sections
+entity_type: node
+bundle: home
+label: 'Home Page sections'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 5
+        enabled: false
+      feature_section:
+        weight: 6
+        enabled: false
+      hero_section:
+        weight: 7
+        enabled: false
+      our_services_section:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

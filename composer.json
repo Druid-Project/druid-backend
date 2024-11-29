@@ -38,6 +38,7 @@
         "allow-plugins": {
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
+            "cweagans/composer-patches": true,
             "drupal/core-project-message": true,
             "phpstan/extension-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
@@ -100,6 +101,11 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "patches": {
+            "mautic/api-library": {
+                "Fix incompatible setLogger method": "patches/mautic-api-setlogger-patch.patch"
+            }
         }
     }
 }

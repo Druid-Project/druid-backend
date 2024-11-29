@@ -1,0 +1,46 @@
+uuid: 60bad2d7-509a-4755-beef-15ec52b12fc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+    - media.type.image
+  module:
+    - comment
+    - contact
+    - field_ui
+    - filter
+    - image
+    - media
+    - search
+    - system
+_core:
+  default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access media overview'
+  - 'access site-wide contact form'
+  - 'administer image styles'
+  - 'administer media display'
+  - 'administer media fields'
+  - 'administer media form display'
+  - 'create image media'
+  - 'create media'
+  - 'delete any image media'
+  - 'delete any image media revisions'
+  - 'delete own image media'
+  - 'edit any image media'
+  - 'edit own image media'
+  - 'revert any image media revisions'
+  - 'search content'
+  - 'update any media'
+  - 'use text format restricted_html'
+  - 'view all media revisions'
+  - 'view any image media revisions'
+  - 'view media'
+  - 'view own unpublished media'

@@ -1,0 +1,23 @@
+uuid: f7fe1bfa-e2dc-4c45-b0ee-27969e974b7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mautic_formid
+    - paragraphs.paragraphs_type.mautic
+  module:
+    - options
+_core:
+  default_config_hash: AlK-74AU3XeYjFi-kwP6ScbYRa9KZGF4v_sdWm9FBwM
+id: paragraph.mautic.field_mautic_formid
+field_name: field_mautic_formid
+entity_type: paragraph
+bundle: mautic
+label: Form
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

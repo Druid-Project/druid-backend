@@ -1,0 +1,41 @@
+uuid: b36f39a8-3186-456b-b6eb-5f86c064e695
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_services
+    - node.type.services
+  module:
+    - entity_reference_revisions
+id: node.services.field_services
+field_name: field_services
+entity_type: node
+bundle: services
+label: services
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 6
+        enabled: false
+      feature_section:
+        weight: 7
+        enabled: false
+      hero_section:
+        weight: 8
+        enabled: false
+      mautic:
+        weight: 9
+        enabled: false
+      our_services_section:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

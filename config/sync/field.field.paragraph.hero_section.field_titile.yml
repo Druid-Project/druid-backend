@@ -1,0 +1,19 @@
+uuid: 0b539336-060f-426a-83c5-35c4508b714b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titile
+    - paragraphs.paragraphs_type.hero_section
+id: paragraph.hero_section.field_titile
+field_name: field_titile
+entity_type: paragraph
+bundle: hero_section
+label: Titile
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
