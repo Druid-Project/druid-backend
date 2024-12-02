@@ -23,6 +23,7 @@
         "drupal/core-recommended": "^10.3",
         "drupal/devel": "^5.3",
         "drupal/jsonapi_extras": "^3.26",
+        "drupal/jsonapi_include": "^1.8",
         "drupal/mautic": "^1.13",
         "drupal/mautic_paragraph": "^1.1",
         "drupal/paragraphs": "^1.18",

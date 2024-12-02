@@ -3,7 +3,7 @@ _core:
 connector: basic_auth
 limit: 100
 connector_config:
-  scheme: https
+  scheme: http
   base_url: druid-mautic.lndo.site
   port: ''
   path: ''

@@ -30,6 +30,7 @@ module:
   image: 0
   jsonapi: 0
   jsonapi_extras: 0
+  jsonapi_include: 0
   link: 0
   mautic: 0
   mautic_paragraph: 0
