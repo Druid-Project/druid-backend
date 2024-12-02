@@ -1,18 +1,18 @@
-uuid: fdfcec70-2451-45b2-929b-fd35ce07b444
+uuid: e232deaf-d5b5-42c6-b887-c554eee38453
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_services_section_cards
+    - field.storage.paragraph.field_connect_card
     - paragraphs.paragraphs_type.card
-    - paragraphs.paragraphs_type.our_services_section
+    - paragraphs.paragraphs_type.connect_with_us
   module:
     - entity_reference_revisions
-id: paragraph.our_services_section.field_services_section_cards
-field_name: field_services_section_cards
+id: paragraph.connect_with_us.field_connect_card
+field_name: field_connect_card
 entity_type: paragraph
-bundle: our_services_section
-label: 'Services section cards'
+bundle: connect_with_us
+label: 'connect card'
 description: ''
 required: false
 translatable: false
@@ -26,24 +26,27 @@ settings:
     negate: 0
     target_bundles_drag_drop:
       blog:
-        weight: 8
+        weight: 10
         enabled: false
       blog_cards:
-        weight: 9
+        weight: 11
         enabled: false
       card:
-        weight: 5
+        weight: 12
         enabled: true
+      connect_with_us:
+        weight: 9
+        enabled: false
       feature_section:
-        weight: 6
-        enabled: false
-      hero_section:
-        weight: 7
-        enabled: false
-      mautic:
         weight: 13
         enabled: false
+      hero_section:
+        weight: 14
+        enabled: false
+      mautic:
+        weight: 15
+        enabled: false
       our_services_section:
-        weight: 8
+        weight: 16
         enabled: false
 field_type: entity_reference_revisions

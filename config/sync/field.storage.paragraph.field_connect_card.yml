@@ -1,19 +1,19 @@
-uuid: 5eda93a6-2b46-432b-a1f2-c456e25b1724
+uuid: dd3e3c28-bb04-4e6c-b3d9-49fa600b0c5b
 langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
     - paragraphs
-id: paragraph.field_services_section_cards
-field_name: field_services_section_cards
+id: paragraph.field_connect_card
+field_name: field_connect_card
 entity_type: paragraph
 type: entity_reference_revisions
 settings:
   target_type: paragraph
 module: entity_reference_revisions
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
