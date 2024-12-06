@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.hero_section.field_background_image
     - field.field.paragraph.hero_section.field_cta_button
     - field.field.paragraph.hero_section.field_description
+    - field.field.paragraph.hero_section.field_mautic_segment_visibility
     - field.field.paragraph.hero_section.field_titile
     - paragraphs.paragraphs_type.hero_section
   module:
@@ -37,6 +38,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_mautic_segment_visibility:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_titile:

@@ -1,0 +1,13 @@
+mautic_api_integration.segments:
+  path: '/mautic-api/segments'
+  defaults:
+    _controller: '\Drupal\mautic_api_integration\Controller\MauticApiController::getSegments'
+    _title: 'Mautic Segments'
+  requirements:
+    _permission: 'access content'
+mautic_api_integration.json_segments:
+  path: "/jsonapi/custom/mautic-segments"
+  defaults:
+    _controller: '\Drupal\mautic_api_integration\Controller\MauticApiController::getSegments'
+  requirements:
+    _permission: "access content"

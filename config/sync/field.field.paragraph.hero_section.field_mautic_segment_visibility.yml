@@ -1,0 +1,33 @@
+uuid: fc67b2d8-1fcf-4160-b2d4-ec4d3a5b2f1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mautic_segment_visibility
+    - paragraphs.paragraphs_type.hero_section
+    - taxonomy.vocabulary.mautic_segments
+  content:
+    - 'taxonomy_term:mautic_segments:8b097e9a-5ff3-4cc1-9197-2a2688a2b792'
+id: paragraph.hero_section.field_mautic_segment_visibility
+field_name: field_mautic_segment_visibility
+entity_type: paragraph
+bundle: hero_section
+label: 'Mautic Segment Visibility'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 8b097e9a-5ff3-4cc1-9197-2a2688a2b792
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      mautic_segments: mautic_segments
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
