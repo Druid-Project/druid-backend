@@ -7,6 +7,7 @@ use Drupal\mautic_api_integration\Service\MauticApiClient;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Controller for handling Mautic API integration.
@@ -86,4 +87,45 @@ class MauticApiController extends ControllerBase
         return new JsonResponse($segments);
     }
 
+    /**
+     * Handles the POST request to log mtc_id.
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *   The incoming request.
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *   The JSON response.
+     */
+    public function logMtcId(Request $request): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+        if (isset($data['data']['attributes']['mtc_id'])) {
+            $mtcId = $data['data']['attributes']['mtc_id'];
+            $this->logger->info('Received mtc_id: @mtc_id', ['@mtc_id' => $mtcId]);
+
+            // Store the mtc_id in the key-value store.
+            $this->mauticApiClient->storeMtcId($mtcId);
+
+            return new JsonResponse(['message' => 'mtc_id logged successfully'], 200);
+        } else {
+            $this->logger->error('mtc_id not provided in the request.');
+            return new JsonResponse(['error' => 'mtc_id not provided'], 400);
+        }
+    }
+
+    /**
+     * Provides a JSON response with the stored mtc_id.
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *   The JSON response containing the stored mtc_id.
+     */
+    public function getMtcId(): JsonResponse
+    {
+        $mtcId = $this->mauticApiClient->getStoredMtcId();
+        if ($mtcId) {
+            return new JsonResponse(['mtc_id' => $mtcId], 200);
+        } else {
+            return new JsonResponse(['error' => 'No mtc_id found'], 404);
+        }
+    }
 }

@@ -109,4 +109,26 @@ class MauticApiClient
         return $segments;
     }
 
+    /**
+     * Stores the mtc_id in the key-value store.
+     *
+     * @param string $mtcId
+     *   The mtc_id to store.
+     */
+    public function storeMtcId(string $mtcId): void
+    {
+        $this->store->set('mtc_id', $mtcId);
+    }
+
+    /**
+     * Retrieves the stored mtc_id from the key-value store.
+     *
+     * @return string|null
+     *   The stored mtc_id or null if not found.
+     */
+    public function getStoredMtcId(): ?string
+    {
+        return $this->store->get('mtc_id', null);
+    }
+
 }

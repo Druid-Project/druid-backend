@@ -11,3 +11,19 @@ mautic_api_integration.json_segments:
     _controller: '\Drupal\mautic_api_integration\Controller\MauticApiController::getSegments'
   requirements:
     _permission: "access content"
+mautic_api_integration.log_mtc_id:
+  path: '/jsonapi/custom/mautic-segments/client/mtc_id'
+  defaults:
+    _controller: '\Drupal\mautic_api_integration\Controller\MauticApiController::logMtcId'
+    _title: 'Log MTC ID'
+  methods: ['POST']
+  requirements:
+    _permission: 'access content'
+mautic_api_integration.get_mtc_id:
+  path: '/jsonapi/custom/mautic-segments/client/get_mtc_id'
+  defaults:
+    _controller: '\Drupal\mautic_api_integration\Controller\MauticApiController::getMtcId'
+    _title: 'Get MTC ID'
+  methods: ['GET']
+  requirements:
+    _permission: 'access content'
