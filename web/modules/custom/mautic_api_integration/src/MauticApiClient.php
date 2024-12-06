@@ -61,9 +61,9 @@ class MauticApiClient
      */
     public function fetchSegments(): ?array
     {
-        $url = 'https://druid-mautic.lndo.site/api/segments';
-        $username = 'hbc_druid'; // Replace with Mautic username.
-        $password = 'helloMautic777.'; // Replace with Mautic password.
+        $url = getenv('MAUTIC_BASE_URL') . '/api/segments';
+        $username = getenv('MAUTIC_USERNAME');
+        $password = getenv('MAUTIC_PASSWORD');
 
         try {
             // Log the URL from which segments are being fetched.
