@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\mautic_api_integration;
+namespace Drupal\mautic_api_integration\Service;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;
