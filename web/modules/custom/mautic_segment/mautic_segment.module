@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Provides hook implementations for the Mautic Segment module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function mautic_segment_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.mautic_segment':
+      return '<p>' . \Drupal::translation()->translate('The Mautic Segment module provides functionality to log and manage Mautic Segment entities.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function mautic_segment_entity_view_mode_alter(array &$view_modes) {
+  $view_modes['mautic_segment.default'] = [
+    'label' => t('Default'),
+    'custom_settings' => TRUE,
+  ];
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function mautic_segment_entity_type_build(array &$entity_types) {
+  if (isset($entity_types['mautic_segment'])) {
+    $entity_types['mautic_segment']->set('view_modes', [
+      'default' => [
+        'label' => t('Default'),
+        'custom_settings' => TRUE,
+      ],
+    ]);
+  }
+}

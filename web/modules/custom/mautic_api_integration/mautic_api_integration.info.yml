@@ -1,0 +1,7 @@
+name: "Mautic API Integration"
+type: module
+description: "Fetches data from Mautic API for segment-based personalization."
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:jsonapi

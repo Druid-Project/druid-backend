@@ -6,5 +6,5 @@ _core:
   default_config_hash: U_LiFOkiaWMh4KAhKOY5PALzYNdWYgM0kndqa2PY4AE
 id: mautic_block
 label: Mautic
-revision: 0
+revision: false
 description: 'Mautic form in a block'

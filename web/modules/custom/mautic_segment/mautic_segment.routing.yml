@@ -1,0 +1,22 @@
+mautic_segment.mtc_id:
+  path: "/jsonapi/mautic-segments/mtc-id"
+  defaults:
+    _controller: '\Drupal\mautic_segment\Controller\MauticSegmentController::logMtcId'
+    _title: "Log MTC ID"
+  requirements:
+    _permission: "access content"
+  methods: [POST, GET]
+
+mautic_segment.canonical:
+  path: "/mautic-segment/{mautic_segment}"
+  defaults:
+    _entity_view: "mautic_segment.default"
+  requirements:
+    _entity_access: "view mautic_segment entity"
+
+mautic_segment.collection:
+  path: "/mautic-segment/list"
+  defaults:
+    _entity_list: "mautic_segment"
+  requirements:
+    _permission: "access content"

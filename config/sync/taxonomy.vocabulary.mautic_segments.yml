@@ -1,0 +1,9 @@
+uuid: 5dfe4a70-8eef-4d6a-8aa0-267481fe88af
+langcode: en
+status: true
+dependencies: {  }
+name: 'Mautic Segments'
+vid: mautic_segments
+description: 'Mautic segmentation'
+weight: 0
+new_revision: false

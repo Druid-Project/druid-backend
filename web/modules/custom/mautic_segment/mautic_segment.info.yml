@@ -1,0 +1,9 @@
+name: 'Mautic Segment'
+type: module
+description: 'A custom module to integrate Mautic segments with Drupal.'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies:
+  - drupal:jsonapi
+  - drupal:serialization
+
