@@ -3,7 +3,7 @@
 namespace Drupal\mautic_api_integration\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\mautic_api_integration\MauticApiClient;
+use Drupal\mautic_api_integration\Service\MauticApiClient;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,7 +17,7 @@ class MauticApiController extends ControllerBase
     /**
      * The Mautic API client service.
      *
-     * @var \Drupal\mautic_api_integration\MauticApiClient
+     * @var \Drupal\mautic_api_integration\Service\MauticApiClient
      */
     protected MauticApiClient $mauticApiClient;
 
@@ -31,7 +31,7 @@ class MauticApiController extends ControllerBase
     /**
      * Constructs a new MauticApiController object.
      *
-     * @param \Drupal\mautic_api_integration\MauticApiClient $mautic_api_client
+     * @param \Drupal\mautic_api_integration\Service\MauticApiClient $mautic_api_client
      *   The Mautic API client.
      * @param \Psr\Log\LoggerInterface $logger
      *   The logger service.

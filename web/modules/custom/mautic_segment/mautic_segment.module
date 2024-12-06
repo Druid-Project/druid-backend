@@ -18,11 +18,8 @@ function mautic_segment_help($route_name, \Drupal\Core\Routing\RouteMatchInterfa
 /**
  * Implements hook_entity_view_mode_alter().
  */
-function mautic_segment_entity_view_mode_alter(array &$view_modes) {
-  $view_modes['mautic_segment.default'] = [
-    'label' => t('Default'),
-    'custom_settings' => TRUE,
-  ];
+function mautic_segment_entity_view_mode_alter(array &$view_modes, \Drupal\Core\Entity\EntityInterface $entity, $view_mode) {
+  // ...existing code...
 }
 
 /**
