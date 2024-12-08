@@ -1,0 +1,4 @@
+services:
+  mautic_contacts.api_client:
+    class: Drupal\mautic_contacts\Service\MauticContactsApiClient
+    arguments: ['@http_client', '@logger.factory', '@config.factory']

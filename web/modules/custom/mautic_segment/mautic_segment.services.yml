@@ -1,4 +1,0 @@
-services:
-  mautic_segment.mautic_service:
-    class: Drupal\mautic_segment\Service\MauticService
-    arguments: ["@logger.factory"]

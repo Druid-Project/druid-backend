@@ -909,3 +909,15 @@ $databases['default']['default'] = array (
 // $settings['config_sync_directory'] = 'sites/default/files/config_TbbFhHjvgYPlXdWe5ialkovs5npM1nsoCKVP7oDnDAOmzLTNczwmfHWIWH6B1nfJDPNw7nz8Nw/sync';
 $settings['config_sync_directory'] = '../config/sync/';
 
+// Default Mautic configuration (non-sensitive)
+$config['mautic.settings'] = [
+  'username' => getenv('MAUTIC_USERNAME') ?: '',
+  'password' => getenv('MAUTIC_PASSWORD') ?: '',
+  'url' => getenv('MAUTIC_URL') ?: 'https://druid-mautic.lndo.site',
+];
+
+// Local settings override
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+

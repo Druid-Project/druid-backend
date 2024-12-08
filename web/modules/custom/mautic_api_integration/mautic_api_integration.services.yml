@@ -1,4 +1,0 @@
-services:
-  mautic_api_integration.client:
-    class: Drupal\mautic_api_integration\Service\MauticApiClient
-    arguments: ["@http_client", "@logger.factory", "@keyvalue"]
