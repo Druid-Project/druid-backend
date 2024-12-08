@@ -96,3 +96,6 @@
 # Ignore .env files as they are personal
 /.env
 /dump.sql.gz
+
+# Ignore local settings file
+web/sites/*/settings.local.php

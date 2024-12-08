@@ -1,0 +1,41 @@
+mautic_contacts.list:
+  path: '/api/mautic-contacts'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::getContacts'
+    _title: 'Mautic Contacts'
+  requirements:
+    _permission: 'access content'
+
+mautic_contacts.mtc_id:
+  path: '/api/mautic-contacts/mtc_id'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MtcIdController::logMtcId'
+    _title: 'Log Mautic Tracking ID'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['POST']
+      allowedOrigins: ['*']
+      maxAge: 1000
+
+mautic_contacts.segments:
+  path: '/api/mautic-contacts/mtc_id/segments'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::getContactSegments'
+    _title: 'Contact Segments'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000

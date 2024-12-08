@@ -1,6 +1,0 @@
-services:
-  logger.channel.mautic_api_integration:
-    class: Drupal\Core\Logger\LoggerChannel
-    arguments: ['mautic_api_integration']
-    tags:
-      - { name: logger.channel }
