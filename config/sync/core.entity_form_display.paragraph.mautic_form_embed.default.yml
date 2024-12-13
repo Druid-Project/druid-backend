@@ -1,0 +1,23 @@
+uuid: 30c7fb91-3cc6-417c-9891-554beacb1854
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mautic_form_embed.field_form_id
+    - paragraphs.paragraphs_type.mautic_form_embed
+id: paragraph.mautic_form_embed.default
+targetEntityType: paragraph
+bundle: mautic_form_embed
+mode: default
+content:
+  field_form_id:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,10 @@
+uuid: 63ca5c69-1c7b-4cae-ad7c-94cb94154f56
+langcode: en
+status: true
+dependencies: {  }
+id: mautic_form_embed
+label: 'Mautic Form Embed'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

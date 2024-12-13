@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.card.field_card_description
     - field.field.paragraph.card.field_card_image
     - field.field.paragraph.card.field_card_title
+    - field.field.paragraph.card.field_visible_to
     - paragraphs.paragraphs_type.card
   module:
     - link
@@ -46,6 +47,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_visible_to:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

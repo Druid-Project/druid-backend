@@ -6,8 +6,8 @@ dependencies:
     - field.field.paragraph.hero_section.field_background_image
     - field.field.paragraph.hero_section.field_cta_button
     - field.field.paragraph.hero_section.field_description
-    - field.field.paragraph.hero_section.field_mautic_segment_visibility
     - field.field.paragraph.hero_section.field_titile
+    - field.field.paragraph.hero_section.field_visible_to
     - paragraphs.paragraphs_type.hero_section
   module:
     - link
@@ -44,14 +44,6 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-  field_mautic_segment_visibility:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 5
-    region: content
   field_titile:
     type: string
     label: above
@@ -59,5 +51,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_visible_to:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 5
     region: content
 hidden: {  }

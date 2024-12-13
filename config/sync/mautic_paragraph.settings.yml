@@ -4,7 +4,7 @@ connector: basic_auth
 limit: 100
 connector_config:
   scheme: http
-  base_url: druid-mautic.lndo.site
+  base_url: mautic-lando.lndo.site
   port: ''
   path: ''
   username: hbc_druid

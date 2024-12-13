@@ -19,26 +19,26 @@ bundle: mautic
 mode: default
 content:
   field_mautic_formid:
-    weight: 2
+    type: mautic_form_list
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: mautic_form_list
+    weight: 2
     region: content
   field_mautic_text:
     type: text_default
-    weight: 1
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_mautic_title:
-    weight: 0
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 0
     region: content
 hidden:
   field_mautic_layout: true

@@ -1,0 +1,21 @@
+uuid: 099938c8-ef98-4678-a041-195542bbd46d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mautic_form_embed.field_form_id
+    - paragraphs.paragraphs_type.mautic_form_embed
+id: paragraph.mautic_form_embed.default
+targetEntityType: paragraph
+bundle: mautic_form_embed
+mode: default
+content:
+  field_form_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }
