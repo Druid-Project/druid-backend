@@ -1,8 +1,9 @@
-uuid: 8c6665f5-238d-4d28-a454-f45ad49aa8b5
+uuid: e2df918a-1c4e-4f9f-bf77-505eb11a5df8
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.hero_section.field_background_image
     - field.field.paragraph.hero_section.field_cta_button
     - field.field.paragraph.hero_section.field_description
@@ -11,49 +12,53 @@ dependencies:
     - paragraphs.paragraphs_type.hero_section
   module:
     - link
-    - media_library
-id: paragraph.hero_section.default
+id: paragraph.hero_section.preview
 targetEntityType: paragraph
 bundle: hero_section
-mode: default
+mode: preview
 content:
   field_background_image:
-    type: media_library_widget
-    weight: 1
-    region: content
+    type: entity_reference_entity_view
+    label: above
     settings:
-      media_types: {  }
+      view_mode: default
+      link: false
     third_party_settings: {  }
-  field_cta_button:
-    type: link_default
-    weight: 3
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_description:
-    type: string_textarea
     weight: 2
     region: content
+  field_cta_button:
+    type: link
+    label: above
     settings:
-      rows: 5
-      placeholder: ''
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
-  field_titile:
-    type: string_textfield
-    weight: 0
+    weight: 3
     region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_visible_to:
-    type: options_select
-    weight: 4
-    region: content
+  field_description:
+    type: basic_string
+    label: above
     settings: {  }
     third_party_settings: {  }
-hidden:
-  created: true
-  status: true
+    weight: 4
+    region: content
+  field_titile:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_visible_to:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

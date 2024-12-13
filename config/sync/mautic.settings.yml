@@ -2,11 +2,8 @@ _core:
   default_config_hash: 57YHD-gK9YrCd4mfkPt3DuRirKm_ZMRh2ILuF6JpC44
 visibility:
   request_path_mode: 0
-  request_path_pages: |-
-    /admin
-    /admin/*
-    /batch
-    /node/add*
-    /node/*/*
-    /user/*/*
+  request_path_pages: "/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/*\r\n/user/*/*"
 header: false
+lift_enable: null
+mautic_enable: true
+mautic_base_url: 'https://mautic-lando.lndo.site/mt.js'

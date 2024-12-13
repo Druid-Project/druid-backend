@@ -1,19 +1,19 @@
-uuid: 0e0c85e8-693f-4790-a2ff-6e3e68556773
+uuid: a348743d-f6ea-4120-a7b2-27c1229a3328
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
     - taxonomy
-id: paragraph.field_mautic_segment_visibility
-field_name: field_mautic_segment_visibility
+id: paragraph.field_visible_to
+field_name: field_visible_to
 entity_type: paragraph
 type: entity_reference
 settings:
   target_type: taxonomy_term
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

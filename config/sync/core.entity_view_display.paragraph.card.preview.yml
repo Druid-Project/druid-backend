@@ -1,0 +1,30 @@
+uuid: 5662fc01-7337-4797-ba80-79e0305688e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.card.field_card_cta_button
+    - field.field.paragraph.card.field_card_description
+    - field.field.paragraph.card.field_card_image
+    - field.field.paragraph.card.field_card_title
+    - field.field.paragraph.card.field_visible_to
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.preview
+targetEntityType: paragraph
+bundle: card
+mode: preview
+content:
+  field_visible_to:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  field_card_cta_button: true
+  field_card_description: true
+  field_card_image: true
+  field_card_title: true

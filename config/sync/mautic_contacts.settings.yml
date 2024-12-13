@@ -1,0 +1,4 @@
+segment_taxonomy_mapping:
+  'Test segment': '3'
+  users: '2'
+  visitor: '1'

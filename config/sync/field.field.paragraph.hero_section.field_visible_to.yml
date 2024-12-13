@@ -1,24 +1,20 @@
-uuid: fc67b2d8-1fcf-4160-b2d4-ec4d3a5b2f1f
+uuid: 370c6ebc-6c38-4a70-9a55-e27a18aa49bc
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_mautic_segment_visibility
+    - field.storage.paragraph.field_visible_to
     - paragraphs.paragraphs_type.hero_section
     - taxonomy.vocabulary.mautic_segments
-  content:
-    - 'taxonomy_term:mautic_segments:8b097e9a-5ff3-4cc1-9197-2a2688a2b792'
-id: paragraph.hero_section.field_mautic_segment_visibility
-field_name: field_mautic_segment_visibility
+id: paragraph.hero_section.field_visible_to
+field_name: field_visible_to
 entity_type: paragraph
 bundle: hero_section
-label: 'Mautic Segment Visibility'
+label: 'Visible to'
 description: ''
 required: false
 translatable: false
-default_value:
-  -
-    target_uuid: 8b097e9a-5ff3-4cc1-9197-2a2688a2b792
+default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
