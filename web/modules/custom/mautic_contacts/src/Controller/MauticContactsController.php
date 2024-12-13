@@ -131,4 +131,110 @@ class MauticContactsController extends ControllerBase {
     }
   }
 
+  /**
+   * Fetches and stores segments from the Mautic API.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The JSON response containing the segments data.
+   */
+  public function fetchAndStoreSegments() {
+    $logger = $this->getLogger('mautic_contacts');
+    $logger->debug('Fetching and storing segments from Mautic API');
+    
+    try {
+      $segments = $this->apiClient->getSegments();
+      $logger->debug('Segments retrieved: @count', ['@count' => count($segments)]);
+      
+      // Store segments in shared tempstore
+      $tempstore = \Drupal::service('tempstore.shared')->get('mautic_contacts');
+      $tempstore->set('segments', $segments);
+      
+      return new JsonResponse($segments);
+    }
+    catch (\Exception $e) {
+      $logger->error('Error fetching and storing segments: @error', ['@error' => $e->getMessage()]);
+      return new JsonResponse(['error' => 'Failed to fetch and store segments'], 500);
+    }
+  }
+
+  /**
+   * Maps Mautic segments to Drupal taxonomy terms based on the name.
+   * Creates new taxonomy terms if they do not exist.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The JSON response containing the status of the operation.
+   */
+  public function mapSegmentsToTaxonomy() {
+    $logger = $this->getLogger('mautic_contacts');
+    $logger->debug('Mapping Mautic segments to Drupal taxonomy terms based on the name');
+    
+    try {
+      $segments = $this->apiClient->getSegments();
+      $logger->debug('Segments retrieved: @count', ['@count' => count($segments)]);
+      
+      $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+      $vocabulary = 'mautic_segments';
+      $mapping = [];
+
+      foreach ($segments as $segment_id => $segment) {
+        if (!is_array($segment) || !isset($segment['name'])) {
+          $logger->warning('Invalid segment data: @segment', ['@segment' => json_encode($segment)]);
+          continue;
+        }
+
+        $logger->debug('Processing segment: @segment', ['@segment' => json_encode($segment)]);
+        $terms = $term_storage->loadByProperties([
+          'name' => $segment['name'],
+          'vid' => $vocabulary,
+        ]);
+
+        if ($terms) {
+          $term = reset($terms);
+          $mapping[$segment['name']] = $term->id();
+          $logger->debug('Mapped segment @segment_name to term @term_id', [
+            '@segment_name' => $segment['name'],
+            '@term_id' => $term->id(),
+          ]);
+        } else {
+          // Create a new taxonomy term if it does not exist
+          $term = $term_storage->create([
+            'vid' => $vocabulary,
+            'name' => $segment['name'],
+          ]);
+          $term->save();
+          $mapping[$segment['name']] = $term->id();
+          $logger->debug('Created and mapped new term for segment @segment_name with term ID @term_id', [
+            '@segment_name' => $segment['name'],
+            '@term_id' => $term->id(),
+          ]);
+        }
+      }
+
+      // Store the mapping in configuration
+      $config = \Drupal::configFactory()->getEditable('mautic_contacts.settings');
+      $config->set('segment_taxonomy_mapping', $mapping)->save();
+
+      // Log the entire mapping result
+      $logger->debug('Segment to taxonomy mapping: @mapping', ['@mapping' => json_encode($mapping)]);
+
+      return new JsonResponse(['status' => 'Segments mapped to taxonomy terms successfully']);
+    }
+    catch (\Exception $e) {
+      $logger->error('Error mapping segments to taxonomy terms: @error', ['@error' => $e->getMessage()]);
+      return new JsonResponse(['error' => 'Failed to map segments to taxonomy terms'], 500);
+    }
+  }
+
+  /**
+   * Retrieves the segment to taxonomy mapping.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The JSON response containing the mapping configuration.
+   */
+  public function getMapping() {
+    $config = $this->config('mautic_contacts.settings');
+    $mapping = $config->get('segment_taxonomy_mapping');
+    return new JsonResponse($mapping);
+  }
+
 }

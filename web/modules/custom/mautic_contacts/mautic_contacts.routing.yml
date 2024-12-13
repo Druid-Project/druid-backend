@@ -39,3 +39,54 @@ mautic_contacts.segments:
       allowedMethods: ['GET']
       allowedOrigins: ['*']
       maxAge: 1000
+
+mautic_contacts.fetch_store_segments:
+  path: '/api/mautic-contacts/segments'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::fetchAndStoreSegments'
+    _title: 'Fetch and Store Segments'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000
+
+mautic_contacts.map_segments:
+  path: '/api/mautic-contacts/map-segments'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::mapSegmentsToTaxonomy'
+    _title: 'Map Segments to Taxonomy'
+  methods: [GET]
+  requirements:
+    _permission: 'administer taxonomy'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000
+
+mautic_contacts.get_mapping:
+  path: '/api/mautic-contacts/mapping'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::getMapping'
+    _title: 'Get Segment to Taxonomy Mapping'
+  methods: [GET]
+  requirements:
+    _permission: 'administer taxonomy'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000

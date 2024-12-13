@@ -140,4 +140,51 @@ class MauticContactsApiClient {
     }
   }
 
+  /**
+   * Gets all segments from Mautic API.
+   *
+   * @return array
+   *   An array of segments or empty array if request fails.
+   */
+  public function getSegments(): array {
+    try {
+      $config = $this->configFactory->get('mautic.settings');
+      
+      $url = $config->get('url') . '/api/segments';
+      $this->logger->debug('Attempting to fetch Mautic segments from: @url', ['@url' => $url]);
+      
+      $auth = [
+        $config->get('username'),
+        $config->get('password'),
+      ];
+      
+      $this->logger->debug('Using configured auth credentials');
+
+      $response = $this->httpClient->request('GET', $url, [
+        'auth' => $auth,
+        'headers' => [
+          'Accept' => 'application/json',
+        ],
+      ]);
+
+      $data = json_decode($response->getBody()->getContents(), TRUE);
+      $this->logger->debug('API Response status: @status', ['@status' => $response->getStatusCode()]);
+      $this->logger->debug('Segments data: @data', ['@data' => json_encode($data)]);
+
+      // Extract the segments from the nested structure
+      if (isset($data['lists'])) {
+        $data = $data['lists'];
+      }
+
+      return $data;
+    }
+    catch (GuzzleException $e) {
+      $this->logger->error('Failed to fetch Mautic segments: @error', [
+        '@error' => $e->getMessage(),
+        'trace' => $e->getTraceAsString()
+      ]);
+      return [];
+    }
+  }
+
 }
