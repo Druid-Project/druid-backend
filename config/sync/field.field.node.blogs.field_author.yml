@@ -1,0 +1,33 @@
+uuid: 12e24209-d592-42b2-adef-fa7664f69997
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author
+    - node.type.blogs
+  content:
+    - 'user:user:9596f8cd-77ea-47d5-98fe-5da97f326485'
+id: node.blogs.field_author
+field_name: field_author
+entity_type: node
+bundle: blogs
+label: Author
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 9596f8cd-77ea-47d5-98fe-5da97f326485
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

@@ -1,0 +1,75 @@
+uuid: 814bdad1-1d03-4d01-b164-d3743a18812d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_sections
+    - node.type.blogs
+    - paragraphs.paragraphs_type.image_block
+    - paragraphs.paragraphs_type.mautic
+    - paragraphs.paragraphs_type.mautic_form_embed
+    - paragraphs.paragraphs_type.quote_block
+    - paragraphs.paragraphs_type.text_block
+  module:
+    - entity_reference_revisions
+id: node.blogs.field_content_sections
+field_name: field_content_sections
+entity_type: node
+bundle: blogs
+label: ' Content Sections'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      image_block: image_block
+      text_block: text_block
+      quote_block: quote_block
+      mautic: mautic
+      mautic_form_embed: mautic_form_embed
+    negate: 0
+    target_bundles_drag_drop:
+      blog:
+        weight: -24
+        enabled: false
+      blog_cards:
+        weight: -23
+        enabled: false
+      card:
+        weight: -22
+        enabled: false
+      connect_with_us:
+        weight: -21
+        enabled: false
+      feature_section:
+        weight: -20
+        enabled: false
+      hero_section:
+        weight: -19
+        enabled: false
+      image_block:
+        weight: -27
+        enabled: true
+      mautic:
+        weight: -18
+        enabled: true
+      mautic_form_embed:
+        weight: -17
+        enabled: true
+      our_services_section:
+        weight: -16
+        enabled: false
+      quote_block:
+        weight: -25
+        enabled: true
+      text_block:
+        weight: -26
+        enabled: true
+      why_druid:
+        weight: -15
+        enabled: false
+field_type: entity_reference_revisions

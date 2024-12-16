@@ -1,0 +1,10 @@
+uuid: a47bed40-c173-4359-8c62-dfbada6a76f2
+langcode: en
+status: true
+dependencies: {  }
+id: quote_block
+label: 'Quote Block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,20 @@
+uuid: b169336c-a3a5-4cd8-b6f7-5781b42c1b31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote_block.field_quote_text
+    - paragraphs.paragraphs_type.quote_block
+id: paragraph.quote_block.default
+targetEntityType: paragraph
+bundle: quote_block
+mode: default
+content:
+  field_quote_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

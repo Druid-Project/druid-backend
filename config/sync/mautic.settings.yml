@@ -6,4 +6,4 @@ visibility:
 header: false
 lift_enable: null
 mautic_enable: true
-mautic_base_url: 'https://mautic-lando.lndo.site/mt.js'
+mautic_base_url: 'https://mautic-lando.lndo.site/mtc.js'

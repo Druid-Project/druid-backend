@@ -1,0 +1,19 @@
+uuid: 5e93c841-807c-4d7d-b466-01f92cd26c20
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date
+    - node.type.blogs
+id: node.blogs.field_date
+field_name: field_date
+entity_type: node
+bundle: blogs
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
