@@ -1,4 +1,4 @@
-uuid: ceed61d8-fbcf-436d-a418-a8fa08b4107c
+uuid: 6db6e9c0-ca52-4c39-9524-2deaa9a87a92
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - entity_reference_revisions
     - node
     - paragraphs
-id: node.field_blog_page_sections
-field_name: field_blog_page_sections
+id: node.field_content_sections
+field_name: field_content_sections
 entity_type: node
 type: entity_reference_revisions
 settings:

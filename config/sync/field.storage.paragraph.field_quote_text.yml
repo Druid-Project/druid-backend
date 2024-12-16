@@ -1,19 +1,18 @@
-uuid: 4613590f-d8f0-43d9-b1b2-2eb9361e5da3
+uuid: b10c7f36-388d-40bd-91a9-4b3fc109336a
 langcode: en
 status: true
 dependencies:
   module:
-    - media
     - paragraphs
-id: paragraph.field_background_image
-field_name: field_background_image
+id: paragraph.field_quote_text
+field_name: field_quote_text
 entity_type: paragraph
-type: entity_reference
+type: string_long
 settings:
-  target_type: media
+  case_sensitive: false
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

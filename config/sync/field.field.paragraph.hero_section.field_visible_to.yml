@@ -6,15 +6,19 @@ dependencies:
     - field.storage.paragraph.field_visible_to
     - paragraphs.paragraphs_type.hero_section
     - taxonomy.vocabulary.mautic_segments
+  content:
+    - 'taxonomy_term:mautic_segments:8b097e9a-5ff3-4cc1-9197-2a2688a2b792'
 id: paragraph.hero_section.field_visible_to
 field_name: field_visible_to
 entity_type: paragraph
 bundle: hero_section
 label: 'Visible to'
 description: ''
-required: false
+required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: 8b097e9a-5ff3-4cc1-9197-2a2688a2b792
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'

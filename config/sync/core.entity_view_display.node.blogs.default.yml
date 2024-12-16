@@ -4,7 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.blogs.body
-    - field.field.node.blogs.field_blog_page_sections
+    - field.field.node.blogs.field_author
+    - field.field.node.blogs.field_content_sections
+    - field.field.node.blogs.field_date
+    - field.field.node.blogs.field_hero_image
+    - field.field.node.blogs.field_visible_to
     - node.type.blogs
   module:
     - entity_reference_revisions
@@ -20,20 +24,57 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 4
     region: content
-  field_blog_page_sections:
+  field_author:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_content_sections:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 102
+    weight: 5
+    region: content
+  field_date:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_hero_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_visible_to: true

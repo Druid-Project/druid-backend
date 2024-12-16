@@ -1,24 +1,24 @@
-uuid: efc20f0b-f5f4-4f84-a88b-844d57642abf
+uuid: faca346c-ff9d-460c-96a7-7836997d6ab3
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_visible_to
-    - paragraphs.paragraphs_type.card
+    - field.storage.node.field_visible_to
+    - node.type.blogs
     - taxonomy.vocabulary.mautic_segments
   content:
-    - 'taxonomy_term:mautic_segments:ca4cf5c0-50a1-49db-922b-6797e2f657b9'
-id: paragraph.card.field_visible_to
+    - 'taxonomy_term:mautic_segments:8b097e9a-5ff3-4cc1-9197-2a2688a2b792'
+id: node.blogs.field_visible_to
 field_name: field_visible_to
-entity_type: paragraph
-bundle: card
+entity_type: node
+bundle: blogs
 label: 'Visible to'
 description: ''
 required: false
 translatable: false
 default_value:
   -
-    target_uuid: ca4cf5c0-50a1-49db-922b-6797e2f657b9
+    target_uuid: 8b097e9a-5ff3-4cc1-9197-2a2688a2b792
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'

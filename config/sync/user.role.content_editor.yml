@@ -13,6 +13,7 @@ dependencies:
     - file
     - node
     - path
+    - pathauto
     - system
     - taxonomy
     - toolbar
@@ -30,7 +31,10 @@ permissions:
   - 'access toolbar'
   - 'administer css assets injector'
   - 'administer js assets injector'
+  - 'administer pathauto'
   - 'administer url aliases'
+  - 'bulk delete aliases'
+  - 'bulk update aliases'
   - 'create article content'
   - 'create page content'
   - 'create terms in tags'
@@ -45,6 +49,7 @@ permissions:
   - 'edit own comments'
   - 'edit own page content'
   - 'edit terms in tags'
+  - 'notify of path changes'
   - 'revert all revisions'
   - 'view all revisions'
   - 'view own unpublished content'

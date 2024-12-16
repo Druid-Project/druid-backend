@@ -1,0 +1,15 @@
+uuid: 293aef32-e7d1-4885-8016-729b6135d1ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.text_block.field_text
+    - paragraphs.paragraphs_type.text_block
+id: paragraph.text_block.preview
+targetEntityType: paragraph
+bundle: text_block
+mode: preview
+content: {  }
+hidden:
+  field_text: true
