@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.basic_html
     - media.type.image
+    - taxonomy.vocabulary.mautic_segments
   module:
     - comment
     - contact
@@ -16,6 +17,7 @@ dependencies:
     - search
     - shortcut
     - system
+    - taxonomy
 _core:
   default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
 id: authenticated
@@ -34,15 +36,20 @@ permissions:
   - 'administer media fields'
   - 'administer media form display'
   - 'create image media'
+  - 'create terms in mautic_segments'
   - 'delete any file'
   - 'delete any image media'
   - 'delete any image media revisions'
   - 'delete own files'
   - 'delete own image media'
+  - 'delete term revisions in mautic_segments'
+  - 'delete terms in mautic_segments'
   - 'edit any image media'
   - 'edit own image media'
+  - 'edit terms in mautic_segments'
   - 'post comments'
   - 'revert any image media revisions'
+  - 'revert term revisions in mautic_segments'
   - 'search content'
   - 'skip comment approval'
   - 'update any media'
@@ -51,3 +58,4 @@ permissions:
   - 'view any image media revisions'
   - 'view media'
   - 'view own unpublished media'
+  - 'view term revisions in mautic_segments'

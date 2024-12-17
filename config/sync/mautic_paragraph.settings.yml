@@ -3,7 +3,7 @@ _core:
 connector: basic_auth
 limit: 100
 connector_config:
-  scheme: http
+  scheme: https
   base_url: mautic-lando.lndo.site
   port: ''
   path: ''

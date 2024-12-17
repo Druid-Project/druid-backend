@@ -237,4 +237,26 @@ class MauticContactsController extends ControllerBase {
     return new JsonResponse($mapping);
   }
 
+  /**
+   * Fetches dynamic contents from the Mautic API.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The JSON response containing the dynamic contents data.
+   */
+  public function getDynamicContents() {
+    $logger = $this->getLogger('mautic_contacts');
+    $logger->debug('Fetching dynamic contents from Mautic API');
+    
+    try {
+      $dynamicContents = $this->apiClient->getDynamicContents();
+      $logger->debug('Dynamic contents retrieved: @count', ['@count' => count($dynamicContents)]);
+      
+      return new JsonResponse($dynamicContents);
+    }
+    catch (\Exception $e) {
+      $logger->error('Error fetching dynamic contents: @error', ['@error' => $e->getMessage()]);
+      return new JsonResponse(['error' => 'Failed to fetch dynamic contents'], 500);
+    }
+  }
+
 }
