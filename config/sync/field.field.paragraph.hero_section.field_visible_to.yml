@@ -14,7 +14,7 @@ entity_type: paragraph
 bundle: hero_section
 label: 'Visible to'
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -

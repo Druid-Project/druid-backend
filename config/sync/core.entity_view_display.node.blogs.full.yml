@@ -7,7 +7,7 @@ dependencies:
     - field.field.node.blogs.body
     - field.field.node.blogs.field_author
     - field.field.node.blogs.field_content_sections
-    - field.field.node.blogs.field_date
+    - field.field.node.blogs.field_form
     - field.field.node.blogs.field_hero_image
     - field.field.node.blogs.field_visible_to
     - node.type.blogs
@@ -44,25 +44,6 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-  field_date:
-    type: timestamp
-    label: above
-    settings:
-      date_format: medium
-      custom_date_format: ''
-      timezone: ''
-      tooltip:
-        date_format: long
-        custom_date_format: ''
-      time_diff:
-        enabled: false
-        future_format: '@interval hence'
-        past_format: '@interval ago'
-        granularity: 2
-        refresh: 60
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_hero_image:
     type: entity_reference_entity_view
     label: above
@@ -78,4 +59,5 @@ content:
     weight: 0
     region: content
 hidden:
+  field_form: true
   field_visible_to: true
