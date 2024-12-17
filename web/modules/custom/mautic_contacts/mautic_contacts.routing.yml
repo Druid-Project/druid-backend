@@ -90,3 +90,20 @@ mautic_contacts.get_mapping:
       allowedMethods: ['GET']
       allowedOrigins: ['*']
       maxAge: 1000
+
+mautic_contacts.dynamic_contents:
+  path: '/api/mautic-contacts/dynamiccontents'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::getDynamicContents'
+    _title: 'Dynamic Contents'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000
