@@ -107,3 +107,54 @@ mautic_contacts.dynamic_contents:
       allowedMethods: ['GET']
       allowedOrigins: ['*']
       maxAge: 1000
+
+mautic_contacts.contact_by_id:
+  path: '/api/mautic-contacts/mtc/contact/{mtc_id}'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::getContactById'
+    _title: 'Contact by MTC ID'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000
+
+mautic_contacts.stored_contact:
+  path: '/api/mautic-contacts/mtc/contact'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::getStoredContact'
+    _title: 'Stored Contact'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000
+
+mautic_contacts.personalized_content:
+  path: '/api/mautic-contacts/personalized-content'
+  defaults:
+    _controller: '\Drupal\mautic_contacts\Controller\MauticContactsController::getPersonalizedContent'
+    _title: 'Personalized Content'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+    _cors:
+      enabled: TRUE
+      allowedHeaders: ['Content-Type']
+      allowedMethods: ['GET']
+      allowedOrigins: ['*']
+      maxAge: 1000

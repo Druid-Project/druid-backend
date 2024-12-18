@@ -54,17 +54,20 @@ class MauticContactsApiClient {
   }
 
   /**
-   * Gets all contacts from Mautic API.
+   * Fetches data from the Mautic API.
+   *
+   * @param string $endpoint
+   *   The API endpoint to fetch data from.
    *
    * @return array
-   *   An array of contacts or empty array if request fails.
+   *   An array of data or empty array if request fails.
    */
-  public function getContacts(): array {
+  public function fetchData(string $endpoint): array {
     try {
       $config = $this->configFactory->get('mautic.settings');
       
-      $url = $config->get('url') . '/api/contacts';
-      $this->logger->debug('Attempting to fetch Mautic contacts from: @url', ['@url' => $url]);
+      $url = $config->get('url') . $endpoint;
+      $this->logger->debug('Attempting to fetch data from: @url', ['@url' => $url]);
       
       $auth = [
         $config->get('username'),
@@ -82,11 +85,13 @@ class MauticContactsApiClient {
 
       $data = json_decode($response->getBody()->getContents(), TRUE);
       $this->logger->debug('API Response status: @status', ['@status' => $response->getStatusCode()]);
+      $this->logger->debug('Data retrieved: @data', ['@data' => json_encode($data)]);
 
       return $data;
     }
     catch (GuzzleException $e) {
-      $this->logger->error('Failed to fetch Mautic contacts: @error', [
+      $this->logger->error('Failed to fetch data from @endpoint: @error', [
+        '@endpoint' => $endpoint,
         '@error' => $e->getMessage(),
         'trace' => $e->getTraceAsString()
       ]);
@@ -95,143 +100,13 @@ class MauticContactsApiClient {
   }
 
   /**
-   * Gets segments for a specific contact from Mautic API.
+   * Gets the HTTP client.
    *
-   * @param int $contactId
-   *   The Mautic contact ID.
-   *
-   * @return array
-   *   An array of segments or empty array if request fails.
+   * @return \GuzzleHttp\ClientInterface
+   *   The HTTP client.
    */
-  public function getContactSegments(int $contactId): array {
-    try {
-      $config = $this->configFactory->get('mautic.settings');
-      
-      $url = $config->get('url') . '/api/contacts/' . $contactId . '/segments';
-      $this->logger->debug('Attempting to fetch segments for contact @id from: @url', [
-        '@id' => $contactId,
-        '@url' => $url,
-      ]);
-      
-      $auth = [
-        $config->get('username'),
-        $config->get('password'),
-      ];
-
-      $response = $this->httpClient->request('GET', $url, [
-        'auth' => $auth,
-        'headers' => [
-          'Accept' => 'application/json',
-        ],
-      ]);
-
-      $data = json_decode($response->getBody()->getContents(), TRUE);
-      $this->logger->debug('API Response status: @status', ['@status' => $response->getStatusCode()]);
-
-      return $data;
-    }
-    catch (GuzzleException $e) {
-      $this->logger->error('Failed to fetch segments for contact @id: @error', [
-        '@id' => $contactId,
-        '@error' => $e->getMessage(),
-        'trace' => $e->getTraceAsString()
-      ]);
-      return [];
-    }
-  }
-
-  /**
-   * Gets all segments from Mautic API.
-   *
-   * @return array
-   *   An array of segments or empty array if request fails.
-   */
-  public function getSegments(): array {
-    try {
-      $config = $this->configFactory->get('mautic.settings');
-      
-      $url = $config->get('url') . '/api/segments';
-      $this->logger->debug('Attempting to fetch Mautic segments from: @url', ['@url' => $url]);
-      
-      $auth = [
-        $config->get('username'),
-        $config->get('password'),
-      ];
-      
-      $this->logger->debug('Using configured auth credentials');
-
-      $response = $this->httpClient->request('GET', $url, [
-        'auth' => $auth,
-        'headers' => [
-          'Accept' => 'application/json',
-        ],
-      ]);
-
-      $data = json_decode($response->getBody()->getContents(), TRUE);
-      $this->logger->debug('API Response status: @status', ['@status' => $response->getStatusCode()]);
-      $this->logger->debug('Segments data: @data', ['@data' => json_encode($data)]);
-
-      // Extract the segments from the nested structure
-      if (isset($data['lists'])) {
-        $data = $data['lists'];
-      }
-
-      return $data;
-    }
-    catch (GuzzleException $e) {
-      $this->logger->error('Failed to fetch Mautic segments: @error', [
-        '@error' => $e->getMessage(),
-        'trace' => $e->getTraceAsString()
-      ]);
-      return [];
-    }
-  }
-
-  /**
-   * Gets all dynamic contents from Mautic API.
-   *
-   * @return array
-   *   An array of dynamic contents or empty array if request fails.
-   */
-  public function getDynamicContents(): array {
-    try {
-      $config = $this->configFactory->get('mautic.settings');
-      
-      $url = $config->get('url') . '/api/dynamiccontents';
-      $this->logger->debug('Attempting to fetch Mautic dynamic contents from: @url', ['@url' => $url]);
-      
-      $auth = [
-        $config->get('username'),
-        $config->get('password'),
-      ];
-      
-      $this->logger->debug('Using configured auth credentials');
-
-      $response = $this->httpClient->request('GET', $url, [
-        'auth' => $auth,
-        'headers' => [
-          'Accept' => 'application/json',
-        ],
-      ]);
-
-      $data = json_decode($response->getBody()->getContents(), TRUE);
-      $this->logger->debug('API Response status: @status', ['@status' => $response->getStatusCode()]);
-      $this->logger->debug('Dynamic contents data: @data', ['@data' => json_encode($data)]);
-
-      // Extract the dynamic contents from the nested structure
-      if (isset($data['dynamicContents'])) {
-        $data = $data['dynamicContents'];
-      }
-
-      return $data;
-    }
-    catch (GuzzleException $e) {
-      $this->logger->error('Failed to fetch Mautic dynamic contents: @error', [
-        '@error' => $e->getMessage(),
-        'trace' => $e->getTraceAsString()
-      ]);
-      return [];
-    }
+  public function getHttpClient(): ClientInterface {
+    return $this->httpClient;
   }
 
 }

@@ -49,7 +49,7 @@ class MauticContactsController extends ControllerBase {
     $this->getLogger('mautic_contacts')->debug('Accessing mautic contacts endpoint');
     
     try {
-      $contacts = $this->apiClient->getContacts();
+      $contacts = $this->apiClient->fetchData('/api/contacts');
       $this->getLogger('mautic_contacts')->debug('Contacts retrieved: @count', ['@count' => count($contacts)]);
       
       return new JsonResponse($contacts);
@@ -73,7 +73,7 @@ class MauticContactsController extends ControllerBase {
     $this->getLogger('mautic_contacts')->debug('Accessing mautic contact segments for ID: @id', ['@id' => $mtc_id]);
     
     try {
-      $segments = $this->apiClient->getContactSegments($mtc_id);
+      $segments = $this->apiClient->fetchData('/api/contacts/' . $mtc_id . '/segments');
       return new JsonResponse($segments);
     }
     catch (\Exception $e) {
@@ -107,7 +107,7 @@ class MauticContactsController extends ControllerBase {
         ], 404);
       }
 
-      $segments = $this->apiClient->getContactSegments($mtc_id);
+      $segments = $this->apiClient->fetchData('/api/contacts/' . $mtc_id . '/segments');
       $logger->debug('Segments retrieved for MTC ID @id: @segments', [
         '@id' => $mtc_id,
         '@segments' => json_encode($segments)
@@ -142,7 +142,7 @@ class MauticContactsController extends ControllerBase {
     $logger->debug('Fetching and storing segments from Mautic API');
     
     try {
-      $segments = $this->apiClient->getSegments();
+      $segments = $this->apiClient->fetchData('/api/segments');
       $logger->debug('Segments retrieved: @count', ['@count' => count($segments)]);
       
       // Store segments in shared tempstore
@@ -169,7 +169,7 @@ class MauticContactsController extends ControllerBase {
     $logger->debug('Mapping Mautic segments to Drupal taxonomy terms based on the name');
     
     try {
-      $segments = $this->apiClient->getSegments();
+      $segments = $this->apiClient->fetchData('/api/segments');
       $logger->debug('Segments retrieved: @count', ['@count' => count($segments)]);
       
       $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
@@ -248,7 +248,7 @@ class MauticContactsController extends ControllerBase {
     $logger->debug('Fetching dynamic contents from Mautic API');
     
     try {
-      $dynamicContents = $this->apiClient->getDynamicContents();
+      $dynamicContents = $this->apiClient->fetchData('/api/dynamiccontents');
       $logger->debug('Dynamic contents retrieved: @count', ['@count' => count($dynamicContents)]);
       
       return new JsonResponse($dynamicContents);
@@ -259,4 +259,165 @@ class MauticContactsController extends ControllerBase {
     }
   }
 
+  /**
+   * Returns a specific Mautic contact based on the MTC ID.
+   *
+   * @param int $mtc_id
+   *   The Mautic contact ID.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The JSON response containing the contact data.
+   */
+  public function getContactById($mtc_id) {
+    $this->getLogger('mautic_contacts')->debug('Accessing mautic contact for ID: @id', ['@id' => $mtc_id]);
+    
+    try {
+      $contact = $this->apiClient->fetchData('/api/contacts/' . $mtc_id);
+      if (isset($contact['contact'])) {
+        return new JsonResponse($contact['contact']);
+      } else {
+        return new JsonResponse(['error' => 'Contact not found'], 404);
+      }
+    }
+    catch (\Exception $e) {
+      $this->getLogger('mautic_contacts')->error('Error getting contact: @error', ['@error' => $e->getMessage()]);
+      return new JsonResponse(['error' => 'Failed to retrieve contact'], 500);
+    }
+  }
+
+  /**
+   * Returns a specific Mautic contact based on the stored MTC ID.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The JSON response containing the contact data.
+   */
+  public function getStoredContact() {
+    $logger = $this->getLogger('mautic_contacts');
+    $logger->debug('Accessing stored Mautic contact');
+
+    try {
+      // Use shared tempstore instead of private
+      $tempstore = \Drupal::service('tempstore.shared')->get('mautic_contacts');
+      $mtc_id = $tempstore->get('mtc_id');
+
+      $logger->debug('Retrieved stored MTC ID: @id', ['@id' => $mtc_id]);
+
+      if (empty($mtc_id)) {
+        $logger->warning('No MTC ID found in storage');
+        return new JsonResponse([
+          'error' => 'No contact ID found. Please POST to /api/mautic-contacts/mtc_id first',
+          'code' => 'MISSING_CONTACT_ID'
+        ], 404);
+      }
+
+      $contact = $this->apiClient->fetchData('/api/contacts/' . $mtc_id);
+      if (isset($contact['contact'])) {
+        return new JsonResponse($contact['contact']);
+      } else {
+        return new JsonResponse(['error' => 'Contact not found'], 404);
+      }
+    }
+    catch (\Exception $e) {
+      $logger->error('Error getting contact: @error', ['@error' => $e->getMessage()]);
+      return new JsonResponse(['error' => 'Failed to retrieve contact'], 500);
+    }
+  }
+
+  /**
+   * Returns personalized content based on the stored MTC ID.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The JSON response containing the personalized content.
+   */
+  public function getPersonalizedContent() {
+    $logger = $this->getLogger('mautic_contacts');
+    $logger->debug('Accessing personalized content for stored Mautic contact');
+
+    try {
+      // Use shared tempstore instead of private
+      $tempstore = \Drupal::service('tempstore.shared')->get('mautic_contacts');
+      $mtc_id = $tempstore->get('mtc_id');
+
+      $logger->debug('Retrieved stored MTC ID: @id', ['@id' => $mtc_id]);
+
+      if (empty($mtc_id)) {
+        $logger->warning('No MTC ID found in storage');
+        return new JsonResponse([
+          'error' => 'No contact ID found. Please POST to /api/mautic-contacts/mtc_id first',
+          'code' => 'MISSING_CONTACT_ID'
+        ], 404);
+      }
+
+      // Fetch contact information
+      $contact = $this->apiClient->fetchData('/api/contacts/' . $mtc_id);
+      if (!isset($contact['contact'])) {
+        return new JsonResponse(['error' => 'Contact not found'], 404);
+      }
+
+      // Fetch segments for the contact
+      $segments = $this->apiClient->fetchData('/api/contacts/' . $mtc_id . '/segments');
+      if (empty($segments)) {
+        return new JsonResponse(['error' => 'Failed to retrieve segments'], 500);
+      }
+
+      // Fetch dynamic content
+      $dynamicContents = $this->apiClient->fetchData('/api/dynamiccontents');
+      if (empty($dynamicContents)) {
+        return new JsonResponse(['error' => 'Failed to retrieve dynamic contents'], 500);
+      }
+
+      // Fetch all segments to map segment IDs to names
+      $allSegments = $this->apiClient->fetchData('/api/segments');
+      $segmentMap = [];
+      if (isset($allSegments['lists'])) {
+        foreach ($allSegments['lists'] as $segment) {
+          $segmentMap[$segment['id']] = $segment['name'];
+        }
+      }
+
+      // Filter dynamic content based on the contact's segments
+      $filteredContent = array_filter($dynamicContents['dynamicContents'], function($content) use ($segments, $segmentMap) {
+        $contactSegmentIds = array_column($segments['lists'], 'id');
+        if (empty($content['filters'])) {
+          return false; // Exclude content with empty filters
+        }
+        foreach ($content['filters'] as $filter) {
+          if ($filter['field'] === 'leadlist') {
+            $segmentIds = $filter['filter'];
+            if ($filter['operator'] === 'in' && !array_intersect($segmentIds, $contactSegmentIds)) {
+              return false;
+            }
+            if ($filter['operator'] === '!in' && array_intersect($segmentIds, $contactSegmentIds)) {
+              return false;
+            }
+          }
+        }
+        return true;
+      });
+
+      // Map segment names to dynamic content
+      foreach ($filteredContent as &$content) {
+        $content['segment_names'] = [];
+        foreach ($content['filters'] as $filter) {
+          if ($filter['field'] === 'leadlist') {
+            foreach ($filter['filter'] as $segmentId) {
+              $content['segment_names'][] = $segmentMap[$segmentId] ?? 'Unknown';
+            }
+          }
+        }
+      }
+
+      return new JsonResponse([
+        'contact' => $contact['contact'],
+        'segments' => $segments,
+        'dynamic_content' => $filteredContent,
+      ]);
+    }
+    catch (\Exception $e) {
+      $logger->error('Error getting personalized content: @error', ['@error' => $e->getMessage()]);
+      return new JsonResponse(['error' => 'Failed to retrieve personalized content'], 500);
+    }
+  }
+
 }
+
