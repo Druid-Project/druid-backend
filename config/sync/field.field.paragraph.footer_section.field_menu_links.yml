@@ -1,0 +1,23 @@
+uuid: b80ad10b-7f20-40f6-bfde-207a24396435
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_menu_links
+    - paragraphs.paragraphs_type.footer_section
+  module:
+    - link
+id: paragraph.footer_section.field_menu_links
+field_name: field_menu_links
+entity_type: paragraph
+bundle: footer_section
+label: 'Menu links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,39 @@
+uuid: 2b7907b6-53b4-4c26-aa1f-f73ff5f38592
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.careers.body
+    - field.field.node.careers.field_career_section
+    - node.type.careers
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.careers.default
+targetEntityType: node
+bundle: careers
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_career_section:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,22 +1,19 @@
-uuid: a3e2fe10-f16c-41df-9867-a41e6e5b2f79
+uuid: cf7aca2c-11c2-40b7-9d6d-314236bd9e0d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_home_page_sections
-    - node.type.home
-    - paragraphs.paragraphs_type.card
-    - paragraphs.paragraphs_type.feature_section
-    - paragraphs.paragraphs_type.hero_section
-    - paragraphs.paragraphs_type.mautic
-    - paragraphs.paragraphs_type.our_services_section
+    - field.storage.node.field_footer_page_sections
+    - node.type.footer
+    - paragraphs.paragraphs_type.connect_with_us
+    - paragraphs.paragraphs_type.footer_section
   module:
     - entity_reference_revisions
-id: node.home.field_home_page_sections
-field_name: field_home_page_sections
+id: node.footer.field_footer_page_sections
+field_name: field_footer_page_sections
 entity_type: node
-bundle: home
-label: 'Home Page sections'
+bundle: footer
+label: 'Footer page sections'
 description: ''
 required: false
 translatable: false
@@ -26,46 +23,43 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      card: card
-      feature_section: feature_section
-      hero_section: hero_section
-      our_services_section: our_services_section
-      mautic: mautic
+      connect_with_us: connect_with_us
+      footer_section: footer_section
     negate: 0
     target_bundles_drag_drop:
       blog:
-        weight: 9
+        weight: 15
         enabled: false
       blog_cards:
-        weight: 10
+        weight: 16
         enabled: false
       card:
-        weight: 5
-        enabled: true
-      connect_with_us:
-        weight: 12
+        weight: 17
         enabled: false
-      feature_section:
-        weight: 6
+      connect_with_us:
+        weight: 18
         enabled: true
+      feature_section:
+        weight: 19
+        enabled: false
       footer_section:
         weight: 20
-        enabled: false
-      hero_section:
-        weight: 7
         enabled: true
+      hero_section:
+        weight: 21
+        enabled: false
       image_block:
         weight: 22
         enabled: false
       mautic:
-        weight: 15
-        enabled: true
+        weight: 23
+        enabled: false
       mautic_form_embed:
         weight: 24
         enabled: false
       our_services_section:
-        weight: 8
-        enabled: true
+        weight: 25
+        enabled: false
       quote_block:
         weight: 26
         enabled: false
