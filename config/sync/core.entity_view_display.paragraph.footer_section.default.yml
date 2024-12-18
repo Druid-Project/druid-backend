@@ -1,0 +1,59 @@
+uuid: 21066079-d8a5-4532-a8dd-def7e6386833
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.footer_section.field_copyright_text
+    - field.field.paragraph.footer_section.field_logo
+    - field.field.paragraph.footer_section.field_menu_links
+    - field.field.paragraph.footer_section.field_social_media_link
+    - paragraphs.paragraphs_type.footer_section
+  module:
+    - link
+id: paragraph.footer_section.default
+targetEntityType: paragraph
+bundle: footer_section
+mode: default
+content:
+  field_copyright_text:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_logo:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_menu_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_social_media_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

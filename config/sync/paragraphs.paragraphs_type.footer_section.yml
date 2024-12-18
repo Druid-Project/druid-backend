@@ -1,0 +1,10 @@
+uuid: 2fff2538-cf34-415e-803e-f0123a794624
+langcode: en
+status: true
+dependencies: {  }
+id: footer_section
+label: 'Footer Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
